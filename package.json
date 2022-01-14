@@ -1,0 +1,23 @@
+{
+  "engines": {
+    "node": "17.3.0",
+    "npm": "8.3.0"
+  },
+  "name": "capstone",
+  "version": "2.0.0",
+  "description": "A quiz to pick which investment the quiz-taker should choose.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1049.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "querystring": "^0.2.1"
+  }
+}

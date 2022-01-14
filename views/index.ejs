@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+
+        #quiz{
+            width: 40vw;
+            height: 40vw;
+            border-radius: 10px;
+            background-color: white;
+            display: block;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        p{
+            font-size: 2em;
+            color: purple;
+        }
+
+        #choice{
+            color: blue;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div id="quiz">
+        <form action="/quiz" method="POST">
+            <p>1. Please enter your name.</p>
+            <input type="text" name="userName" placeholder="Warren Buffet"><br>
+            <p>2. How much money are you willing and able to invest upfront?</p><br>
+            <input type="radio" name="initInvest" id="100" value="100">
+            <label for="100" id="choice">$100 or less</label><br>
+            <input type="radio" name="initInvest" id="100+" value="100+">
+            <label for="100+" id="choice">More than $100 but up to $5,000</label><br>
+            <input type="radio" name="initInvest" id="5000" value="5000">
+            <label for="5000" id="choice">More than $5,000 but less than $100,000</label><br>
+            <input type="radio" name="initInvest" id="100k" value="100k">
+            <label for="100k" id="choice">$100,000 or more</label><br>
+            <p>3. Are you planning to contribute to the investment monthly?</p>
+            <input type="radio" name="monthContr" id="yes" value="yes">
+            <label for="yes" id="choice">Yes</label><br>
+            <input type="radio" name="monthContr" id="no" value="no">
+            <label for="no" id="choice">No</label><br>
+            <input type="radio" name="monthContr" id="maybe" value="maybe">
+            <label for="maybe" id="choice">Possibly, if I have extra money to invest.</label><br>
+            <p>4. Do you need to be able to easily access your money once it is invested?</p><br>
+            <input type="radio" name="easeOfFunds" id="yes" value="yes">
+            <label for="yes" id="choice">Yes</label><br>
+            <input type="radio" name="easeOfFunds" id="no" value="no">
+            <label for="no" id="choice">No</label><br>
+            <p>5. Can you keep your investment untouched for a specified period, possibly for years?</p><br>
+            <input type="radio" name="setAndForget" id="yes" value="yes">
+            <label for="yes" id="choice">Yes</label><br>
+            <input type="radio" name="setAndForget" id="no" value="no">
+            <label for="no" id="choice">No</label><br>
+            <p>6. Are you already investing any money? If so, check all in which you have money invested.</p><br>
+            <input type="checkbox" name="portfolio" id="stock" value="stock">
+            <label for="stock" id="choice">Stocks</label><br>
+            <input type="checkbox" name="portfolio" id="etf" value="etf">
+            <label for="etf" id="choice">Exchange-Traded Funds (ETFs)</label><br>
+            <input type="checkbox" name="portfolio" id="property" value="property">
+            <label for="property" id="choice">Real Estate</label><br>
+            <input type="checkbox" name="portfolio" id="reit" value="reit">
+            <label for="reit" id="choice">Real Estate Investment Trusts (REIT)</label><br>
+            <input type="checkbox" name="portfolio" id="commodity" value="commodity">
+            <label for="commodity" id="choice">Commodities (Gold, Crude oil, etc.)</label><br>
+            <input type="checkbox" name="portfolio" id="mutual" value="mutual">
+            <label for="mutual" id="choice">Mutual Funds</label><br>
+            <input type="checkbox" name="portfolio" id="cd" value="cd">
+            <label for="cd" id="choice">Certificates of Deposit (CDs)</label><br>
+            <input type="checkbox" name="portfolio" id="bond" value="bond">
+            <label for="bond" id="choice">Bonds</label><br>
+            <input type="checkbox" name="portfolio" id="business" value="business">
+            <label for="business" id="choice">Business (as an owner, franchisee, investor)</label><br>
+            <input type="checkbox" name="portfolio" id="mm" value="mm">
+            <label for="mm" id="choice">Money Market Funds</label><br>
+            <input type="checkbox" name="portfolio" id="index" value="index">
+            <label for="index" id="choice">Index Funds</label><br>
+            <input type="checkbox" name="portfolio" id="crypto" value="crypto">
+            <label for="crypto" id="choice">Cryptocurrencies</label><br>
+            <input type="checkbox" name="portfolio" id="retire" value="retire">
+            <label for="retire" id="choice">Retirement Plans (401k, 403b, Individual Retirment Account [IRA])</label><br>
+            <input type="checkbox" name="portfolio" id="forex" value="forex">
+            <label for="forex" id="choice">Foreign Currencies</label><br>
+            <input type="checkbox" name="portfolio" id="collect" value="collect">
+            <label for="collect" id="choice">Collectibles</label><br>
+            <input type="checkbox" name="portfolio" id="other" value="other">
+            <label for="other" id="choice">Other</label><br>
+            <input type="checkbox" name="portfolio" id="none" value="none">
+            <label for="none" id="choice">None of the above/I have no investments</label><br>
+            <br>
+            <p>7. Do you have a goal in mind with your investment?</p><br>
+            <input type="radio" name="goal" id="long" value="long">
+            <label for="long" id="choice">Yes, I am looking for a long-term investment for retirement (or something similar).</label><br>
+            <input type="radio" name="goal" id="short" value="short">
+            <label for="short" id="choice">Yes, I am looking for a short-term to save money (e.g., down payment, vacation, emergency savings, etc.)</label><br>
+            <input type="radio" name="goal" id="none" value="none">
+            <label for="none" id="choice">No, I do not have a goal for my investment.</label><br>
+            <p>8. How much of a return are you looking for from your investment?</p>
+            <input type="radio" name="returns" id="high" value="high">
+            <label for="high" id="choice">Significant -- I would like use my investment for income.</label><br>
+            <input type="radio" name="returns" id="medium" value="medium">
+            <label for="medium" id="choice">Moderate -- a decent return would be nice.</label><br>
+            <input type="radio" name="returns" id="low" value="low">
+            <label for="low" id="choice">Slight -- I am basically looking for somewhere to put my money that is better than a savings account.</label><br>
+            <p>9. When gambling, how high is your wager?</p><br>
+            <input type="radio" name="moneyRisk" id="high" value="high">
+            <label for="high" id="choice">I am all about high stakes. I get a thrill out of losing it all and possibly winning even more.</label><br>
+            <input type="radio" name="moneyRisk" id="low" value="low">
+            <label for="low" id="choice">I play it safe and stick to low/moderate wagers. I am not comfortable with possibly losing a lot of money.</label><br>
+            <input type="radio" name="moneyRisk" id="none" value="none">
+            <label for="none" id="choice">You will not find me gambling. I do not like the idea of losing any money at all.</label><br>
+            <p>10. What kind of news do you typically follow? Select all that apply.</p>
+            <input type="checkbox" name="interests" id="business" value="business">
+            <label for="business" id="choice">Business</label><br>
+            <input type="checkbox" name="interests" id="finance" value="finance">
+            <label for="finance" id="choice">Finance</label><br>
+            <input type="checkbox" name="interests" id="econ" value="econ">
+            <label for="econ" id="choice">Economics</label><br>
+            <input type="checkbox" name="interests" id="tech" value="tech">
+            <label for="tech" id="choice">Technology</label><br>
+            <input type="checkbox" name="interests" id="pop" value="pop">
+            <label for="pop" id="choice">Popular Culture/Celebrity</label><br>
+            <input type="checkbox" name="interests" id="entertainment" value="entertainment">
+            <label for="entertainment" id="choice">Arts & Media (to include film, television, music)</label><br>
+            <input type="checkbox" name="interests" id="fashion" value="fashion">
+            <label for="fashion" id="choice">Fashion</label><br>
+            <input type="checkbox" name="interests" id="food" value="food">
+            <label for="food" id="choice">Food</label><br>
+            <input type="checkbox" name="interests" id="world" value="world">
+            <label for="world" id="choice">World/Global</label><br>
+            <input type="checkbox" name="interests" id="environment" value="environment">
+            <label for="environment" id="choice">Environment</label><br>
+            <input type="checkbox" name="interests" id="science" value="science">
+            <label for="science" id="choice">Science</label><br>
+            <input type="checkbox" name="interests" id="politics" value="politics">
+            <label for="politics" id="choice">Politics</label><br>
+            <input type="checkbox" name="interests" id="transport" value="transport">
+            <label for="transport" id="choice">Transportation (to include automotive, air travel, etc.)</label><br>
+            <input type="checkbox" name="interests" id="health" value="health">
+            <label for="health" id="choice">Health (to include medicine, fitness)</label><br>
+            <input type="checkbox" name="interests" id="sports" value="sports">
+            <label for="sports" id="choice">Sports</label><br>
+            <input type="checkbox" name="interests" id="other" value="other">
+            <label for="other" id="choice">Other</label><br>
+            <input type="checkbox" name="interests" id="none" value="none">
+            <label for="none" id="choice">None, I typicvally do not follow any news.</label><br>
+            <br>
+            <p>11. Do you like to take on personal projects that may require a significant amount of time invested?</p>
+            <input type="radio" name="projects" id="high" value="high">
+            <label for="high" id="choice">Yes, I enjoy personal projects and working to complete something.</label><br>
+            <input type="radio" name="projects" id="medium" value="medium">
+            <label for="medium" id="choice">I have to be in the mood for a project, but if I do take something on, I give it my all.</label><br>
+            <input type="radio" name="projects" id="low" value="low">
+            <label for="low" id="choice">I like starting projects but have a difficult time finishing them.</label><br>
+            <input type="radio" name="projects" id="no" value="no">
+            <label for="no" id="choice">I do not really take on many personal projects.</label><br>
+            <p>12. How well do you handle change?</p>
+            <input type="radio" name="volatile" id="high" value="high">
+            <label for="high" id="choice">I am a very adaptable person and/or prefer change.</label><br>
+            <input type="radio" name="volatile" id="medium" value="medium">
+            <label for="medium" id="choice">I do not mind change as long as it is not too drastic.</label><br>
+            <input type="radio" name="volatile" id="low" value="low">
+            <label for="low" id="choice">I like things to remain relatively the same; I appreciate consistency.</label><br>
+            <br>
+            <!--<p>13. And finally, a general risk assessment. Select all that you have done or would do.</p>-->
+            <input type="submit" value="Submit Quiz">
+        </form>
+    </div>
+    </center>
+    <script>
+        function show2(){
+            document.getElementById('question1').style.display="none";
+            document.getElementById('question2').style.display="block";
+            return false;
+        }
+    </script>
+</body>
+</html>

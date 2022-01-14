@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+        #quiz{
+            width: 40vw;
+            height: 20vw;
+            border-radius: 10px;
+            background-color: white;
+            display: none;
+        }
+
+        p{
+            font-size: 2em;
+            color: purple;
+        }
+
+        #congrats{
+            width: 40vw;
+            height: 20vw;
+            border-radius: 10px;
+            background-color: white;
+            display: block;
+        }
+
+        #start-butt{
+            background-color: green;
+            font-size: 2em;
+            color: white;
+        }
+
+        #choice{
+            color: blue;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div id="congrats">
+        <p>Congratulations <%=data.name%>! You have submitted your quiz! Here are your results:
+        </p>
+    </div>
+    <%=console.log(data);%>
+    <%let same = 0;%>
+    <%let recommended = "";%>
+
+        <%for (let i = 0; i < investmentChoices.length; i ++) { %>
+            <%let currentSame = 0;%>
+            <%if (investmentChoices[i]["risk"] == data.risky_with_money){ %>
+                <%currentSame ++;%>
+            <%}%>
+            <%if (investmentChoices[i]["return"] == data.potential_return){ %>
+                <%currentSame ++;%>
+            <%}%>
+            <%if (investmentChoices[i]["monthly"] == data.monthly_contribution){ %>
+                <%currentSame ++;%>
+            <%}%>
+            <%if (investmentChoices[i]["start"] == data.initial_investment) {%>
+                <%currentSame ++;%>
+            <%}%>
+            <%if (currentSame > same) {%>
+                <%same = currentSame;%>
+                <%recommended = investmentChoices[i]["type"];%>
+            <%}%>
+        <%}%>
+        <%console.log(`The recommended investment choice for you is ${recommended}.`)%>
+</body>
+</html>
